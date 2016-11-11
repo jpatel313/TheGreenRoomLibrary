@@ -11,16 +11,23 @@ namespace TheGreenRoomLibrary
         private string author;
         private string title;
         private bool status;
-        private bool dueDate;
+        private DateTime dueDate;
         
 
-        public Book(string author, string title, bool status, bool dueDate)
+        public Book(string author, string title, bool status, DateTime dueDate)
         {
             Author = author;
             Title = title;
             Status = status;
             DueDate = dueDate;
         }
+        public Book(string author, string title, bool status)
+        {
+            Author = author;
+            Title = title;
+            Status = status;
+        }
+
         public Book()
         {
             this.Author = author;
@@ -69,7 +76,7 @@ namespace TheGreenRoomLibrary
             }
         }
 
-        public bool DueDate
+        public DateTime DueDate
         {
             get
             {
