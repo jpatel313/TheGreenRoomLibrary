@@ -28,6 +28,8 @@ namespace TheGreenRoomLibrary
             this.Status = status;
             this.DueDate = dueDate;
         }
+
+        #region Get/Set
         public string Author
         {
             get
@@ -78,8 +80,10 @@ namespace TheGreenRoomLibrary
             {
                 dueDate = value;
             }
+            #endregion
+
         }
 
-        
+
     }
 }
