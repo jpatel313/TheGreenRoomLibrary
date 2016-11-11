@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace TheGreenRoomLibrary
 {
-    class BookListClass
+    public class BookListClass
     {
-        private static List<Book> readFile()
+        public static List<Book> readFile()
         {
             List<Book> BookArray = new List<Book>();
 
-            string filelocation = "../../DataFile.txt";
+            string filelocation = "../../BookList.txt";
 
             StreamReader reader = new StreamReader(filelocation);
 
