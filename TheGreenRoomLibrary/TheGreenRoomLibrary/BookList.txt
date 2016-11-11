@@ -1,0 +1,12 @@
+﻿For Whom The Bell Tolls, Ernest Hemmingway, false
+The Old Man and The Sea, Ernest Hemmingway, false
+Animal Farm, George Orwell, false
+1984, George Orwell, false
+Slaughterhouse Five, Kurt Vonnegutt, false
+Cats Cradle, Kurt Vonnegutt, false
+The Alchemist, Paolo Coelho, false
+Love in the Time of Cholera, Gabriel Garcia-Marquez, false 
+100 Years of Solitude, Gabriel Garcia-Marquez, false
+All the Pretty Horses, Cormac McCarthy, false
+No Country for Old Men, Cormac McCarthy, false
+The Stranger, Albert Camus, false
