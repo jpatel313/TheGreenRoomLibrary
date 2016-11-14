@@ -16,7 +16,7 @@ namespace TheGreenRoomLibrary
             foreach (Book B in BookList)
             {
                 String a = B.Author;
-                if (author == a)
+                if (author.ToLower() == a.ToLower())
                 {
                     BookArray.Add(B);
                 }
@@ -24,7 +24,25 @@ namespace TheGreenRoomLibrary
             return BookArray;
         }
 
+        public static List<Book> SearchTitleKeyword(List<Book> BookList, String titleKeyword)
+        {
+            List<Book> BookArray = new List<Book>();
 
+            foreach (Book B in BookList)
+            {
+                String t = B.Title;
+                String[] title = t.Split(' ');
+                foreach (String word in title)
+                {
+                    if (word.ToLower() == titleKeyword.ToLower())
+                    {
+                        BookArray.Add(B);
+                    }
+                }
+            }
+
+            return BookArray;
+        }
 
     }
 }
