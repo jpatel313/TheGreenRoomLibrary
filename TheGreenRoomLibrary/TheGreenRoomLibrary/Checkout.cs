@@ -6,26 +6,37 @@ using System.Threading.Tasks;
 
 namespace TheGreenRoomLibrary
 {
-    public class Checkout:BookListClass
+    public class Checkout : BookListClass
     {
-        public Checkout(author):base.
-        {
-            this.
-        }
+        bool agree = true;
 
-        public List<Book> CheckoutMethod(readFile.BookArray)
+        public static void CheckInMethod(Book books)
         {
-            
-            if (readFile.BookArray == true)
+            if (books.Status == true)
             {
-                readFile.BookArray.Add(new Book(rc[0], rc[1], check, DateTime.Parse(rc[3])));
+                books.Status = false;
+                Console.WriteLine("Thank you for returning this book!");
             }
-            else if (check == false)
+            else
             {
-                BookArray.Add(new Book(rc[0], rc[1], check));
+                Console.WriteLine("ERROR: Contact Library immediately!");
             }
         }
 
+        public static void CheckoutMethod(Book books)
+        {
 
+            if (books.Status == false)
+            {
+                books.Status = true;
+
+                DateTime dueDate = DateTime.Now.AddDays(14);
+                Console.WriteLine($"This book is due on: {dueDate}");
+            }
+            else
+            {
+                Console.WriteLine("That book is not available.  Please choose another book.");
+            }
+        }
     }
 }
