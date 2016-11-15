@@ -68,7 +68,7 @@ namespace TheGreenRoomLibrary
                             inpt = Console.ReadLine();
                             foreach (Book B in SearchedBooks)
                             {
-                                if (B.Title == inpt)
+                                if (B.Title.ToLower() == inpt.ToLower())
                                 {
                                     checkout = B;
                                     check = false;

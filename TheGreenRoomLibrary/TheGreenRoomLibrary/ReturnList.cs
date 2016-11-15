@@ -19,11 +19,10 @@ namespace TheGreenRoomLibrary
                 String[] auth = a.Split(' ');
                 foreach (String word in auth)
                 {
-                    if (author.ToLower() == a.ToLower())
-                    {
-                        BookArray.Add(B);
-
-                    }
+                        if (author.ToLower() == word.ToLower())
+                        {
+                            BookArray.Add(B);
+                        }
                 }
             }
             return BookArray;
