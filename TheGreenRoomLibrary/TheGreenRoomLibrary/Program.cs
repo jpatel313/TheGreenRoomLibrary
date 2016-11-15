@@ -136,19 +136,28 @@ namespace TheGreenRoomLibrary
         {
             string filelocation = "../../BookList.txt";
             StreamWriter writer = new StreamWriter(filelocation);
+            List<String> LS = new List<string>();
             foreach (Book B in Books)
             {
+                LS.Add(B.Title + ",");
+                LS.Add(B.Author + ", ");
+                
                 if (B.Status == true)
                 {
-                    writer.WriteLine(B.Title + ", " + B.Author + ", " + B.Status + ", " + B.DueDate);
+                    LS.Add(Convert.ToString(B.Status) + ", ");
+                    LS.Add(Convert.ToString(B.DueDate + "\n"));
                 }
-                else if (B.Status == false)
+                else
                 {
-                    writer.WriteLine(B.Title + ", " + B.Author + ", " + B.Status);
+                    LS.Add(Convert.ToString(B.Status)+"\n");
                 }
                 
             }
-
+            foreach (String s in LS)
+            {
+                writer.Write(s);
+            }
+            writer.Close();
         }
 
 
@@ -160,7 +169,7 @@ namespace TheGreenRoomLibrary
                 Console.Write(B.Title + ", " + B.Author + ", ");
                 if (B.Status == true)
                 {
-                    Console.WriteLine("Checked out" + B.DueDate);
+                    Console.WriteLine("Checked out, due back: " + B.DueDate);
                 }
                 else if (B.Status == false)
                 {

@@ -27,21 +27,16 @@ namespace TheGreenRoomLibrary
                 if (rc[2].ToLower() == " true")
                 {
                     check = true;
+                    BookArray.Add(new Book(rc[0], rc[1], check, DateTime.Parse(rc[3])));
                 }
                 else if (rc[2].ToLower() == " false")
                 {
                     check = false;
-                }
-                if (check == true)
-                {
-                    BookArray.Add(new Book(rc[0], rc[1], check, DateTime.Parse(rc[3])));
-                }
-                else if (check == false)
-                {
                     BookArray.Add(new Book(rc[0], rc[1], check));
                 }
-                }
+            }
             reader.Close();
+            reader.Dispose();
             return BookArray;
         }
     } 
