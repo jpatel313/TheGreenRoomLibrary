@@ -24,11 +24,11 @@ namespace TheGreenRoomLibrary
             foreach (string record in Records)
             {
                 string[] rc = record.Trim().Split(',');
-                if (rc[2] == " true")
+                if (rc[2].ToLower() == " true")
                 {
                     check = true;
                 }
-                else if (rc[2] == " false")
+                else if (rc[2].ToLower() == " false")
                 {
                     check = false;
                 }

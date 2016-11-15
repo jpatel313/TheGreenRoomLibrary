@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,7 +79,7 @@ namespace TheGreenRoomLibrary
                                 Console.WriteLine("Please enter a book from the list");
                             }
                         }
-                        Checkout.CheckoutMethod(checkout);
+                        Checkout.CheckoutMethod(ref checkout);
                         
                         Console.WriteLine("Would you like to leave? (y/n)");
                         while (true)
@@ -88,6 +89,7 @@ namespace TheGreenRoomLibrary
                             {
                                 Console.WriteLine("Have a nice day!");
                                 state = 0;
+                                SaveChanges(Books);
                                 break;
                             }
                             else if (inpt == "n")
@@ -112,6 +114,7 @@ namespace TheGreenRoomLibrary
                             {
                                 Console.WriteLine("Have a nice day!");
                                 state = 0;
+                                SaveChanges(Books);
                                 break;
                             }
                             else if (inpt == "n")
@@ -129,6 +132,26 @@ namespace TheGreenRoomLibrary
             }
         }
         
+        public static void SaveChanges(List<Book> Books)
+        {
+            string filelocation = "../../BookList.txt";
+            StreamWriter writer = new StreamWriter(filelocation);
+            foreach (Book B in Books)
+            {
+                if (B.Status == true)
+                {
+                    writer.WriteLine(B.Title + ", " + B.Author + ", " + B.Status + ", " + B.DueDate);
+                }
+                else if (B.Status == false)
+                {
+                    writer.WriteLine(B.Title + ", " + B.Author + ", " + B.Status);
+                }
+                
+            }
+
+        }
+
+
         public static int PrintList(List<Book> Books)
         {
             int state;

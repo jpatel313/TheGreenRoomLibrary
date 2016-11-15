@@ -9,7 +9,7 @@ namespace TheGreenRoomLibrary
     public class Checkout 
     {
 
-        public static void CheckInMethod(Book books)
+        public static void CheckInMethod(ref Book books)
         {
             if (books.Status == true)
             {
@@ -23,7 +23,7 @@ namespace TheGreenRoomLibrary
             }
         }
 
-        public static string CheckoutMethod(Book books)
+        public static string CheckoutMethod(ref Book books)
         {
 
             if (books.Status == false)
