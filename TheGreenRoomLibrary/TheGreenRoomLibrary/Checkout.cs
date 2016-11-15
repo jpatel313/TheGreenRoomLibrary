@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TheGreenRoomLibrary
 {
-    public class Checkout : BookListClass
+    public class Checkout 
     {
-        bool agree = true;
+       
 
         public static void CheckInMethod(Book books)
         {
