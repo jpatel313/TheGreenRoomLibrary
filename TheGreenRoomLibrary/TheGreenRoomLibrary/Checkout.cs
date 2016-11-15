@@ -26,7 +26,7 @@ namespace TheGreenRoomLibrary
             }
         }
 
-        public static string CheckoutMethod(ref Book books)
+        public static void CheckoutMethod(ref Book books)
         {
 
             if (books.Status == false)
@@ -35,12 +35,12 @@ namespace TheGreenRoomLibrary
 
                 DateTime dueDate = DateTime.Now.AddDays(14);
 
-                return ($"You have successfuly checked this book out. Due date: {dueDate}");
+                Console.WriteLine($"You have successfuly checked this book out. Due date: {dueDate}");
             }
 
             else
             {
-                return ("That book is not available.  Please choose another book.");
+                Console.WriteLine("That book is not available.  Please choose another book.");
             }
         }
     }
