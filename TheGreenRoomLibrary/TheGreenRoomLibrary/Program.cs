@@ -59,7 +59,7 @@ namespace TheGreenRoomLibrary
                         break;
 
                     case 4:
-                        Book checkout;
+                        Book checkout = new Book();
                         Boolean check = true;
                         while (check == true)
                         {
@@ -77,8 +77,9 @@ namespace TheGreenRoomLibrary
                             {
                                 Console.WriteLine("Please enter a book from the list");
                             }
-                            //checkout method (checkout)
                         }
+                        Checkout.CheckoutMethod(checkout);
+                        
                         Console.WriteLine("Would you like to leave? (y/n)");
                         while (true)
                         {
