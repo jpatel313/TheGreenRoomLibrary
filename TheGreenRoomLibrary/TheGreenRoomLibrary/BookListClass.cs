@@ -16,19 +16,19 @@ namespace TheGreenRoomLibrary
             string filelocation = "../../BookList.txt";
 
             StreamReader reader = new StreamReader(filelocation);
-
+            
             string Data = reader.ReadToEnd().Trim();
-
             string[] Records = Data.Split('\n');
             bool check = true;
+            
             foreach (string record in Records)
             {
-                string[] rc = record.Split(',');
-                if (rc[2] == "true")
+                string[] rc = record.Trim().Split(',');
+                if (rc[2] == " true")
                 {
                     check = true;
                 }
-                else if (rc[2] == "false")
+                else if (rc[2] == " false")
                 {
                     check = false;
                 }
