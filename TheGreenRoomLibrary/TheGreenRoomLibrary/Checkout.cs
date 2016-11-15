@@ -8,7 +8,6 @@ namespace TheGreenRoomLibrary
 {
     public class Checkout 
     {
-       
 
         public static void CheckInMethod(Book books)
         {
@@ -17,13 +16,14 @@ namespace TheGreenRoomLibrary
                 books.Status = false;
                 Console.WriteLine("Thank you for returning this book!");
             }
+
             else
             {
                 Console.WriteLine("ERROR: Contact Library immediately!");
             }
         }
 
-        public static void CheckoutMethod(Book books)
+        public static string CheckoutMethod(Book books)
         {
 
             if (books.Status == false)
@@ -31,11 +31,12 @@ namespace TheGreenRoomLibrary
                 books.Status = true;
 
                 DateTime dueDate = DateTime.Now.AddDays(14);
-                Console.WriteLine($"This book is due on: {dueDate}");
+                return ($"You have successfuly checked this book out. Due date: {dueDate}");
             }
+
             else
             {
-                Console.WriteLine("That book is not available.  Please choose another book.");
+                return("That book is not available.  Please choose another book.");
             }
         }
     }
