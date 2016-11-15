@@ -24,7 +24,7 @@ No Country for Old Men, Cormac McCarthy, false
 The Stranger, Albert Camus, false
 Ulysses, James Joyce, false
 American Psycho, Brett Easton-Ellis, false
-It Is Like So Easy Dr Kamel, false
+It Is Like So Easy, Dr Kamel, false
 Just Google It, Dr Kamel, false
 The ABCs of Coding, Dr Kamel, false
 Where the Wild Things Are, Maurice Sendak, false
