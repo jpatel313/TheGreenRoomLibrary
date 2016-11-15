@@ -14,14 +14,14 @@ namespace TheGreenRoomLibrary
         private DateTime dueDate;
         
 
-        public Book(string author, string title, bool status, DateTime dueDate)
+        public Book(string title, string author, bool status, DateTime dueDate)
         {
             Author = author;
             Title = title;
             Status = status;
             DueDate = dueDate;
         }
-        public Book(string author, string title, bool status)
+        public Book(string title, string author, bool status)
         {
             Author = author;
             Title = title;
