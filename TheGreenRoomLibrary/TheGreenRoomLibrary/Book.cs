@@ -8,12 +8,14 @@ namespace TheGreenRoomLibrary
 {
     public class Book
     {
+        #region Variables
         private string author;
         private string title;
         private bool status;
         private DateTime dueDate;
-        
+        #endregion
 
+        #region Book Constructors
         public Book(string title, string author, bool status, DateTime dueDate)
         {
             Author = author;
@@ -35,6 +37,7 @@ namespace TheGreenRoomLibrary
             this.Status = status;
             this.DueDate = dueDate;
         }
+        #endregion
 
         #region Get/Set
         public string Author
