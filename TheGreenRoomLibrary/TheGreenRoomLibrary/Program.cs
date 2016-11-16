@@ -14,6 +14,31 @@ namespace TheGreenRoomLibrary
             List<Book> Books = new List<Book>();
             Books = BookListClass.readFile();
             List<Book> SearchedBooks = new List<Book>();
+            List<UserProfiles> Users = new List<UserProfiles>();
+            Users = UserList.readUsers();
+            Console.WriteLine("Welcome to the Greenroom Library!");
+            UserProfiles user = new UserProfiles();
+            Boolean test = true;
+            while (test == true)
+            {
+                Console.WriteLine("Would you like to \n1 - Login\n2 - Make a new account");
+                String read = Console.ReadLine();
+                if (read == "1")
+                {
+                    user = UserList.LogIn(Users);
+                    test = false;
+                }
+                else if (read == "2")
+                {
+                    Users.Add(UserList.NewAccount());
+                    test = false;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter 1 or 2");
+                    test = true;
+                }
+            }
             int state = 6;
             while (state != 0)
             {
@@ -21,6 +46,7 @@ namespace TheGreenRoomLibrary
                 {
                     case 6:
                         //This is the starting case, that presents the user with options
+                        Console.WriteLine("Welcome " + user.username);
                         Console.WriteLine("What would you like to do:\n1 - Display all books\n2 - Search by author\n3 - Search by title keyword\n4 - Donate a book");
 
 
@@ -102,6 +128,7 @@ namespace TheGreenRoomLibrary
                             {
                                 Console.WriteLine("Have a nice day!");
                                 state = 0;
+                                UserList.UpdateUsers(Users);
                                 SaveChanges(Books);
                                 break;
                             }
@@ -127,7 +154,7 @@ namespace TheGreenRoomLibrary
 
                     case 8:
                         //Shhhhh admins only
-                        state = Eight(Books);
+                        state = Eight(Books, ref user);
                         break;
                 }
             }
@@ -161,8 +188,8 @@ namespace TheGreenRoomLibrary
             }
             writer.Close();
         }
-        
-        public static int Eight(List<Book> Books)
+
+        public static int Eight(List<Book> Books, ref UserProfiles User)
         {
             //allows admins to login and then checkin a book
             int state;
@@ -170,6 +197,7 @@ namespace TheGreenRoomLibrary
             String i = Console.ReadLine();
             if (i.ToLower() == "googleit")
             {
+                UserProfiles.makeAdmin(User);
                 Console.WriteLine("Welcome admin, would you like to check in a book?");
                 while (true)
                 {
