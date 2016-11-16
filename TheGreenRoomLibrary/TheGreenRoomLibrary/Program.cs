@@ -20,6 +20,7 @@ namespace TheGreenRoomLibrary
                 switch (state)
                 {
                     case 6:
+                        //This is the starting case, that presents the user with options
                         Console.WriteLine("What would you like to do:\n1 - Display all books\n2 - Search by author\n3 - Search by title keyword\n4 - Donate a book");
 
 
@@ -33,23 +34,24 @@ namespace TheGreenRoomLibrary
                         }
                         else
                         {
-                            state = int.Parse(input);
+                            state = int.Parse(input);//Caveat: This converts a user input of 4 to the case for donating which is case 7
                             if (input == "4")
                             {
                                 state = 7;
                             }
-                            
+
                         }
                         break;
 
                     case 1:
+                        //Prints out all the books in the library
                         SearchedBooks = Books;
                         state = PrintList(SearchedBooks);
                         break;
 
 
                     case 2:
-
+                        //Calls the SearchAuthor method from the ReturnList Class
                         Console.Write("What author would you like to search for: ");
                         String inpt = Console.ReadLine();
                         SearchedBooks = ReturnList.SearchAuthor(Books, inpt);
@@ -57,6 +59,7 @@ namespace TheGreenRoomLibrary
                         break;
 
                     case 3:
+                        //Calls the SearchTitleKeyword method from the Return Class
                         Console.Write("What keyword would you like to search for: ");
                         inpt = Console.ReadLine();
                         SearchedBooks = ReturnList.SearchTitleKeyword(Books, inpt);
@@ -64,6 +67,7 @@ namespace TheGreenRoomLibrary
                         break;
 
                     case 4:
+                        //Calls CheckoutMethod in the Checkout class with the book entered by the user
                         Book checkout = new Book();
                         Boolean check = true;
                         while (check == true)
@@ -89,7 +93,7 @@ namespace TheGreenRoomLibrary
                         break;
 
                     case 5:
-
+                        //This is our exit case that all other cases point to, it saves the changes before leaving
                         Console.WriteLine("Would you like to leave? (y/n)");
                         while (true)
                         {
@@ -114,6 +118,7 @@ namespace TheGreenRoomLibrary
                         break;
 
                     case 7:
+                        //Calls the Donate method in the checkout class
                         Book Bo = new Book();
                         Bo = Checkout.Donate();
                         Books.Add(Bo);
@@ -121,14 +126,16 @@ namespace TheGreenRoomLibrary
                         break;
 
                     case 8:
+                        //Shhhhh admins only
                         state = Eight(Books);
                         break;
                 }
             }
         }
-        
+
         public static void SaveChanges(List<Book> Books)
         {
+            //This method Rewrites the BookList.txt file with all the changes made throughout the use of the program
             string filelocation = "../../BookList.txt";
             StreamWriter writer = new StreamWriter(filelocation);
             List<String> LS = new List<string>();
@@ -136,7 +143,7 @@ namespace TheGreenRoomLibrary
             {
                 LS.Add(B.Title + ",");
                 LS.Add(B.Author + ", ");
-                
+
                 if (B.Status == true)
                 {
                     LS.Add(Convert.ToString(B.Status) + ", ");
@@ -144,9 +151,9 @@ namespace TheGreenRoomLibrary
                 }
                 else
                 {
-                    LS.Add(Convert.ToString(B.Status)+"\n");
+                    LS.Add(Convert.ToString(B.Status) + "\n");
                 }
-                
+
             }
             foreach (String s in LS)
             {
@@ -154,9 +161,10 @@ namespace TheGreenRoomLibrary
             }
             writer.Close();
         }
-
+        
         public static int Eight(List<Book> Books)
         {
+            //allows admins to login and then checkin a book
             int state;
             Console.WriteLine("You must be an admin to check a book in, what is your password: ");
             String i = Console.ReadLine();
@@ -170,7 +178,7 @@ namespace TheGreenRoomLibrary
                     {
                         Book checkin = new Book();
                         Boolean c = true;
-                        PrintList( ReturnList.SearchCheckedOut(Books));
+                        PrintList(ReturnList.SearchCheckedOut(Books));
                         while (c == true)
                         {
                             Console.WriteLine("Which book would you like to check in?");
@@ -217,6 +225,7 @@ namespace TheGreenRoomLibrary
 
         public static int PrintList(List<Book> Books)
         {
+            //prints out whichever list of books is put into it
             int state;
             foreach (Book B in Books)
             {
