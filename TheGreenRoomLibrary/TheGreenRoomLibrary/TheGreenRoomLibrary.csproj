@@ -56,6 +56,12 @@
   <ItemGroup>
     <Content Include="BookList.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UnitTestGRL\UnitTestGRL.csproj">
+      <Project>{3372659b-225b-460f-a52f-c2fe77524f48}</Project>
+      <Name>UnitTestGRL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
