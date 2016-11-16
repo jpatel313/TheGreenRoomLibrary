@@ -20,21 +20,24 @@ namespace TheGreenRoomLibrary
                 switch (state)
                 {
                     case 6:
-                        Console.WriteLine("What would you like to do:\n1 - Display all books\n2 - Search by author\n3 - Search by title keyword");
+                        Console.WriteLine("What would you like to do:\n1 - Display all books\n2 - Search by author\n3 - Search by title keyword\n4 - Donate a book");
 
 
                         String input = Console.ReadLine();
 
-                        if (input != "1" && input != "2" && input != "3")
+                        if (input != "1" && input != "2" && input != "3" && input != "4")
                         {
-                            Console.WriteLine("Please enter 1, 2, or 3");
-                            state = 1;
+                            Console.WriteLine("Please enter 1, 2, 3, or 4");
+                            state = 6;
 
                         }
                         else
                         {
                             state = int.Parse(input);
-
+                            if (input == "4")
+                            {
+                                state = 7;
+                            }
                         }
                         break;
 
@@ -80,28 +83,8 @@ namespace TheGreenRoomLibrary
                             }
                         }
                         Checkout.CheckoutMethod(ref checkout);
-                        
-                        Console.WriteLine("Would you like to leave? (y/n)");
-                        while (true)
-                        {
-                            inpt = Console.ReadLine();
-                            if (inpt == "y")
-                            {
-                                Console.WriteLine("Have a nice day!");
-                                state = 0;
-                                SaveChanges(Books);
-                                break;
-                            }
-                            else if (inpt == "n")
-                            {
-                                state = 6;
-                                break;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Please enter y or n");
-                            }
-                        }
+
+                        state = 5;
                         break;
 
                     case 5:
@@ -127,6 +110,13 @@ namespace TheGreenRoomLibrary
                                 Console.WriteLine("Please enter y or n");
                             }
                         }
+                        break;
+
+                    case 7:
+                        Book Bo = new Book();
+                        Bo = Checkout.Donate();
+                        Books.Add(Bo);
+                        state = 5;
                         break;
                 }
             }

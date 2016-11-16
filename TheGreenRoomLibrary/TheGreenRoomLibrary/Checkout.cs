@@ -43,5 +43,17 @@ namespace TheGreenRoomLibrary
                 Console.WriteLine("That book is not available.  Please choose another book.");
             }
         }
+
+        public static Book Donate()
+        {
+            String author;String title;
+            Console.WriteLine("What is the name of the book you would like to add?");
+            title = Console.ReadLine();
+            Console.WriteLine("Who wrote this book?");
+            author = Console.ReadLine();
+            Book B = new Book(title, " "+ author, false);
+            return B;
+        }
+
     }
 }
