@@ -30,7 +30,8 @@ namespace TheGreenRoomLibrary
                 }
                 else if (read == "2")
                 {
-                    Users.Add(UserList.NewAccount());
+                    user = UserList.NewAccount();
+                    Users.Add(user);
                     test = false;
                 }
                 else
