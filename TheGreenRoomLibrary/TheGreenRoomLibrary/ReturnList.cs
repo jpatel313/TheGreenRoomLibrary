@@ -48,5 +48,19 @@ namespace TheGreenRoomLibrary
             return BookArray;
         }
 
+        public static List<Book> SearchCheckedOut(List<Book> BookList)
+        {
+            List<Book> BookArray = new List<Book>();
+
+            foreach (Book B in BookList)
+            {
+                if (B.Status == true)
+                {
+                    BookArray.Add(B);
+                }
+            }
+            return BookArray;
+        }
+
     }
 }

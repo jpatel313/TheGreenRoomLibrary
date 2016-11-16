@@ -25,7 +25,7 @@ namespace TheGreenRoomLibrary
 
                         String input = Console.ReadLine();
 
-                        if (input != "1" && input != "2" && input != "3" && input != "4")
+                        if (input != "1" && input != "2" && input != "3" && input != "4" && input != "8")
                         {
                             Console.WriteLine("Please enter 1, 2, 3, or 4");
                             state = 6;
@@ -38,6 +38,7 @@ namespace TheGreenRoomLibrary
                             {
                                 state = 7;
                             }
+                            
                         }
                         break;
 
@@ -117,6 +118,63 @@ namespace TheGreenRoomLibrary
                         Bo = Checkout.Donate();
                         Books.Add(Bo);
                         state = 5;
+                        break;
+                    case 8:
+                        Console.WriteLine("You must be an admin to check a book in, what is your password: ");
+                        String i = Console.ReadLine();
+                        if (i.ToLower() == "googleit")
+                        {
+                            Console.WriteLine("Welcome admin, would you like to check in a book?");
+                            while (true)
+                            {
+                                i = Console.ReadLine();
+                                if (i == "y")
+                                {
+                                    Book checkin = new Book();
+                                    Boolean c = true;
+                                    SearchedBooks = ReturnList.SearchCheckedOut(Books);
+                                    PrintList(SearchedBooks);
+                                    while (c == true)
+                                    {
+                                        Console.WriteLine("Which book would you like to check in?");
+                                        i = Console.ReadLine();
+
+                                        foreach (Book B in Books)
+                                        {
+                                            if (B.Title.ToLower() == i.ToLower())
+                                            {
+                                                checkin = B;
+                                                c = false;
+                                            }
+                                        }
+                                        if (c == true)
+                                        {
+                                            Console.WriteLine("Please enter a book from the list");
+                                        }
+                                       
+                                    }
+                                    Checkout.CheckInMethod(ref checkin);
+                                    state = 5;
+                                    break;
+                                }
+                                else if (i == "n")
+                                {
+                                    state = 5;
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Please enter y or n");
+                                }
+                                
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect password");
+                            state = 6;
+                            break;
+                        }
                         break;
                 }
             }

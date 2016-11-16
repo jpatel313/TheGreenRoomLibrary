@@ -17,6 +17,15 @@ namespace TheGreenRoomLibrary
 
                 if (yes == "y" && yes != null)
                 {
+                    
+                    DateTime time = DateTime.Now;
+                    if (books.DueDate.CompareTo(time) > 0)
+                    {
+                        TimeSpan diff = books.DueDate.Subtract(time);
+                        int daysOver = diff.Days;
+                        double lateFee = daysOver * 0.1;
+                        Console.WriteLine("This book is " + daysOver + " days overdue. You owe $" + lateFee + ".");
+                    }
                     books.Status = false;
                     Console.WriteLine("Thank you for returning this book!");
                 }
@@ -33,9 +42,9 @@ namespace TheGreenRoomLibrary
             {
                 books.Status = true;
 
-                DateTime dueDate = DateTime.Now.AddDays(14);
+                books.DueDate = DateTime.Now.AddDays(14);
 
-                Console.WriteLine($"You have successfuly checked this book out. Due date: {dueDate}");
+                Console.WriteLine($"You have successfuly checked this book out. Due date: {books.DueDate}");
             }
 
             else
