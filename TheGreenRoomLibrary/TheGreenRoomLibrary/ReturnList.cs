@@ -8,35 +8,37 @@ namespace TheGreenRoomLibrary
 {
     public class ReturnList
     {
-        
-        public static List<Book> SearchAuthor(List<Book> BookList, String author)
+
+        public static List<Book> SearchAuthor(List<Book> BookList, string author)
         {
             List<Book> BookArray = new List<Book>();
 
             foreach (Book B in BookList)
             {
-                String a = B.Author;
-                String[] auth = a.Split(' ');
-                foreach (String word in auth)
+                string a = B.Author;
+                string[] auth = a.Split(' ');
+
+                foreach (string word in auth)
                 {
-                        if (author.ToLower() == word.ToLower())
-                        {
-                            BookArray.Add(B);
-                        }
+                    if (author.ToLower() == word.ToLower())
+                    {
+                        BookArray.Add(B);
+                    }
                 }
             }
             return BookArray;
         }
 
-        public static List<Book> SearchTitleKeyword(List<Book> BookList, String titleKeyword)
+        public static List<Book> SearchTitleKeyword(List<Book> BookList, string titleKeyword)
         {
             List<Book> BookArray = new List<Book>();
 
             foreach (Book B in BookList)
             {
-                String t = B.Title;
-                String[] title = t.Split(' ');
-                foreach (String word in title)
+                string t = B.Title;
+                string[] title = t.Split(' ');
+
+                foreach (string word in title)
                 {
                     if (word.ToLower() == titleKeyword.ToLower())
                     {
@@ -59,6 +61,7 @@ namespace TheGreenRoomLibrary
                     BookArray.Add(B);
                 }
             }
+
             return BookArray;
         }
 
